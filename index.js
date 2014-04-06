@@ -111,7 +111,11 @@
 		if (settings && typeof settings === 'object') {
 			hostname = settings.hostname || nestSession.urls.transport_url.hostname;
 			port = settings.port || nestSession.urls.transport_url.port;
-			ssl = settings.ssl || true;
+			if ( typeof settings.ssl === 'undefined') {
+				ssl = true;
+			} else {
+				ssl = settings.ssl;
+			}
 			path = settings.path;
 			body = settings.body || null;
 			headers = settings.headers;
@@ -627,4 +631,4 @@
 		root.nest = nestExports;
 	}
 
-})(); 
+})();
