@@ -4,7 +4,7 @@
 	var doRequest = function(url, options, done, data) {
 		var allData = [];
 		var request;
-		
+
 		var response = function(response) {
 
 			response.setEncoding('utf8');
@@ -45,10 +45,10 @@
 				done(null);
 			}
 		};
-
-		if (options.ssl) {			
+		
+		if (options.ssl) {
 			request = https.request(options, response).on('error', error);
-		} else {			
+		} else {
 			request = http.request(options, response).on('error', error);
 		}
 
@@ -61,12 +61,33 @@
 
 	var commsExports = {
 		'doRequest' : doRequest,
-        'logger': { error   : function(msg, props) { console.log(msg); if (!!props) console.trace(props.exception); }
-          , warning : function(msg, props) { console.log(msg); if (!!props) console.log(props);             }
-          , notice  : function(msg, props) { console.log(msg); if (!!props) console.log(props);             }
-          , info    : function(msg, props) { console.log(msg); if (!!props) console.log(props);             }
-          , debug   : function(msg, props) { console.log(msg); if (!!props) console.log(props);             }
-          }
+		'logger' : {
+			error : function(msg, props) {
+				console.log(msg);
+				if (!!props)
+					console.trace(props.exception);
+			},
+			warning : function(msg, props) {
+				console.log(msg);
+				if (!!props)
+					console.log(props);
+			},
+			notice : function(msg, props) {
+				console.log(msg);
+				if (!!props)
+					console.log(props);
+			},
+			info : function(msg, props) {
+				console.log(msg);
+				if (!!props)
+					console.log(props);
+			},
+			debug : function(msg, props) {
+				console.log(msg);
+				if (!!props)
+					console.log(props);
+			}
+		}
 	};
 
 	var root = this;
